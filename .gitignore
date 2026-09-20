@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv
+venv/
+ENV/
+dist/
+build/
+*.egg-info/
+
+# Artifacts
+data/artifacts/*
+!data/artifacts/.gitkeep
+data/audit_chain.jsonl
+*.log
+
+# Models - large binaries excluded, keep structure
+models/*.onnx
+models/*.bin
+models/*.caffemodel
+*.model
+
+# Node
+node_modules/
+frontend/dist/
+frontend/build/
+.next/
+.nuxt/
+.coverage
+coverage/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PDFs / images with PII
+samples/*.pdf
+samples/*.jpg
+samples/*.png
+!samples/.gitkeep
+uploads/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Secrets
+*.pem
+*.key
+*.p12

@@ -1,0 +1,30 @@
+{
+  "sample_id": "AAD-11_ROTATED",
+  "file": "11_rotated.png",
+  "attack": "none",
+  "variant": "rotated",
+  "expected_evidence": [],
+  "expected_status": "CLEAR or REVIEW after correction",
+  "description": "rotated",
+  "base_aadhaar": "304332181964",
+  "masked_aadhaar": "XXXX XXXX 1964",
+  "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+  "fields": {
+    "name": "Aarav Kumar",
+    "dob": "12/04/2005",
+    "gender": "Male",
+    "aadhaar": "304332181964",
+    "masked": "304332181964",
+    "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+  },
+  "printed_fields": {
+    "name": "Aarav Kumar",
+    "dob": "12/04/2005",
+    "gender": "Male",
+    "aadhaar": "304332181964"
+  },
+  "blur": false,
+  "rotate": 90,
+  "recompress": false,
+  "masked_variant": false
+}

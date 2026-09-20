@@ -1,0 +1,634 @@
+{
+  "01_clean": {
+    "sample_id": "AAD-01_CLEAN",
+    "file": "01_clean.png",
+    "attack": "none",
+    "variant": "clean",
+    "expected_evidence": [],
+    "expected_status": "CLEAR",
+    "description": "Clean synthetic document",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "02_modified_dob": {
+    "sample_id": "AAD-02_MODIFIED_DOB",
+    "file": "02_modified_dob.png",
+    "attack": "dob",
+    "variant": "dob_tamper",
+    "expected_evidence": [
+      "QR_PRINTED_CONTRADICTION",
+      "FORENSIC_LOCAL_ANOMALY"
+    ],
+    "expected_status": "REVIEW",
+    "description": "DOB modified, QR contradiction",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "11/04/2004",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "03_modified_name": {
+    "sample_id": "AAD-03_MODIFIED_NAME",
+    "file": "03_modified_name.png",
+    "attack": "name",
+    "variant": "name_tamper",
+    "expected_evidence": [
+      "QR_PRINTED_CONTRADICTION"
+    ],
+    "expected_status": "REVIEW",
+    "description": "name_tamper",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Vikram Singh",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "04_modified_number": {
+    "sample_id": "AAD-04_MODIFIED_NUMBER",
+    "file": "04_modified_number.png",
+    "attack": "number",
+    "variant": "number_tamper",
+    "expected_evidence": [
+      "CHECKSUM_INVALID"
+    ],
+    "expected_status": "REVIEW",
+    "description": "number_tamper",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181965"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "05_modified_gender": {
+    "sample_id": "AAD-05_MODIFIED_GENDER",
+    "file": "05_modified_gender.png",
+    "attack": "gender",
+    "variant": "gender_tamper",
+    "expected_evidence": [],
+    "expected_status": "REVIEW",
+    "description": "gender_tamper",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Female",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "06_modified_address": {
+    "sample_id": "AAD-06_MODIFIED_ADDRESS",
+    "file": "06_modified_address.png",
+    "attack": "address",
+    "variant": "address_tamper",
+    "expected_evidence": [],
+    "expected_status": "LOW_CONCERN",
+    "description": "address_tamper",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "07_replaced_photo": {
+    "sample_id": "AAD-07_REPLACED_PHOTO",
+    "file": "07_replaced_photo.png",
+    "attack": "photo_replaced",
+    "variant": "photo_tamper",
+    "expected_evidence": [
+      "FORENSIC_PHOTO_ANOMALY"
+    ],
+    "expected_status": "REVIEW",
+    "description": "photo_tamper",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "08_multiple_modifications": {
+    "sample_id": "AAD-08_MULTIPLE_MODIFICATIONS",
+    "file": "08_multiple_modifications.png",
+    "attack": "multiple",
+    "variant": "multiple",
+    "expected_evidence": [
+      "QR_PRINTED_CONTRADICTION",
+      "FORENSIC_LOCAL_ANOMALY",
+      "MULTIPLE_MISMATCH"
+    ],
+    "expected_status": "HIGH_REVIEW",
+    "description": "multiple",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Rahul Verma",
+      "dob": "12/04/2003",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "09_face_mismatch": {
+    "sample_id": "AAD-09_FACE_MISMATCH",
+    "file": "09_face_mismatch.png",
+    "attack": "none",
+    "variant": "face_mismatch",
+    "expected_evidence": [],
+    "expected_status": "REVIEW",
+    "description": "face_mismatch",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "10_blurry": {
+    "sample_id": "AAD-10_BLURRY",
+    "file": "10_blurry.png",
+    "attack": "none",
+    "variant": "blurry",
+    "expected_evidence": [
+      "LOW_QUALITY",
+      "LOW_COVERAGE"
+    ],
+    "expected_status": "INCONCLUSIVE",
+    "description": "blurry",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": true,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "11_rotated": {
+    "sample_id": "AAD-11_ROTATED",
+    "file": "11_rotated.png",
+    "attack": "none",
+    "variant": "rotated",
+    "expected_evidence": [],
+    "expected_status": "CLEAR or REVIEW after correction",
+    "description": "rotated",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 90,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "12_screenshot_recompressed": {
+    "sample_id": "AAD-12_SCREENSHOT_RECOMPRESSED",
+    "file": "12_screenshot_recompressed.png",
+    "attack": "none",
+    "variant": "recompressed",
+    "expected_evidence": [],
+    "expected_status": "LOW_CONCERN or REVIEW",
+    "description": "recompressed",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": true,
+    "masked_variant": false
+  },
+  "13_qr_contradiction": {
+    "sample_id": "AAD-13_QR_CONTRADICTION",
+    "file": "13_qr_contradiction.png",
+    "attack": "dob",
+    "variant": "qr_contradiction",
+    "expected_evidence": [
+      "QR_PRINTED_CONTRADICTION",
+      "FORENSIC_LOCAL_ANOMALY"
+    ],
+    "expected_status": "REVIEW",
+    "description": "QR vs printed contradiction",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "11/04/2004",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "14_masked": {
+    "sample_id": "AAD-14_MASKED",
+    "file": "14_masked.png",
+    "attack": "none",
+    "variant": "masked",
+    "expected_evidence": [
+      "MASKED_AADHAAR"
+    ],
+    "expected_status": "CLEAR (masked handling)",
+    "description": "masked",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "XXXX XXXX 1964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": true
+  },
+  "15_missing_qr": {
+    "sample_id": "AAD-15_MISSING_QR",
+    "file": "15_missing_qr.png",
+    "attack": "missing_qr",
+    "variant": "missing_qr",
+    "expected_evidence": [
+      "QR_NOT_PRESENT"
+    ],
+    "expected_status": "LOW_CONCERN or CLEAR (QR not required)",
+    "description": "missing_qr",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "16_missing_photo": {
+    "sample_id": "AAD-16_MISSING_PHOTO",
+    "file": "16_missing_photo.png",
+    "attack": "missing_photo",
+    "variant": "missing_photo",
+    "expected_evidence": [
+      "PHOTO_NOT_FOUND"
+    ],
+    "expected_status": "REVIEW",
+    "description": "missing_photo",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "17_low_ocr": {
+    "sample_id": "AAD-17_LOW_OCR",
+    "file": "17_low_ocr.png",
+    "attack": "none",
+    "variant": "low_ocr",
+    "expected_evidence": [
+      "LOW_QUALITY",
+      "LOW_COVERAGE"
+    ],
+    "expected_status": "INCONCLUSIVE",
+    "description": "low_ocr",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": true,
+    "rotate": 0,
+    "recompress": true,
+    "masked_variant": false
+  },
+  "18_partial_document": {
+    "sample_id": "AAD-18_PARTIAL_DOCUMENT",
+    "file": "18_partial_document.png",
+    "attack": "partial",
+    "variant": "partial",
+    "expected_evidence": [],
+    "expected_status": "INCONCLUSIVE",
+    "description": "partial",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "19_module_failure": {
+    "sample_id": "AAD-19_MODULE_FAILURE",
+    "file": "19_module_failure.png",
+    "attack": "none",
+    "variant": "partial",
+    "expected_evidence": [],
+    "expected_status": "PARTIAL handling",
+    "description": "partial",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  },
+  "20_multi_source_contradiction": {
+    "sample_id": "AAD-20_MULTI_SOURCE_CONTRADICTION",
+    "file": "20_multi_source_contradiction.png",
+    "attack": "multiple",
+    "variant": "three_source",
+    "expected_evidence": [
+      "QR_PRINTED_CONTRADICTION",
+      "FORENSIC_LOCAL_ANOMALY",
+      "MULTIPLE_MISMATCH"
+    ],
+    "expected_status": "HIGH_REVIEW",
+    "description": "three_source",
+    "base_aadhaar": "304332181964",
+    "masked_aadhaar": "XXXX XXXX 1964",
+    "qr_data": "<PrintLetterBarcodeData uid=\"304332181964\" name=\"Aarav Kumar\" gender=\"M\" yob=\"2005\" co=\"S/O R Kumar\" house=\"12/34\" street=\"Gandhi Street\" vtc=\"Salem\" dist=\"Salem\" state=\"Tamil Nadu\" pc=\"636001\" dob=\"12/04/2005\"/>",
+    "fields": {
+      "name": "Aarav Kumar",
+      "dob": "12/04/2005",
+      "gender": "Male",
+      "aadhaar": "304332181964",
+      "masked": "304332181964",
+      "address": "12/34 Gandhi Street, Salem, Tamil Nadu - 636001"
+    },
+    "printed_fields": {
+      "name": "Rahul Verma",
+      "dob": "12/04/2003",
+      "gender": "Male",
+      "aadhaar": "304332181964"
+    },
+    "blur": false,
+    "rotate": 0,
+    "recompress": false,
+    "masked_variant": false
+  }
+}

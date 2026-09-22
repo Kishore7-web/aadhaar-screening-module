@@ -1,82 +1,88 @@
-import React, { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
 
-export default function UploadPanel({ onSubmit, loading }) {
-  const [docFile, setDocFile] = useState(null)
-  const [refFile, setRefFile] = useState(null)
-  const [ekycFile, setEkycFile] = useState(null)
+export default function UploadPanel({ onSubmit, disabled }) {
+  const inputRef = useRef(null)
+  const faceRef = useRef(null)
+  const ekycRef = useRef(null)
+  const [file, setFile] = useState(null)
+  const [referenceFace, setReferenceFace] = useState(null)
+  const [offlineEkyc, setOfflineEkyc] = useState(null)
   const [caseId, setCaseId] = useState('')
-  const [dragOver, setDragOver] = useState(false)
-  const docInput = useRef(null)
+  const [dragging, setDragging] = useState(false)
 
-  const handleDrop = (e) => {
-    e.preventDefault()
-    setDragOver(false)
-    const f = e.dataTransfer.files?.[0]
-    if (f) setDocFile(f)
+  function choose(f) {
+    if (!f) return
+    setFile(f)
   }
 
-  const submit = (e) => {
+  function submit(e) {
     e.preventDefault()
-    if (!docFile) return alert('Please select an Aadhaar document file')
-    onSubmit({ document: docFile, referenceFace: refFile, offlineEkyc: ekycFile, caseId: caseId || undefined, persistArtifacts: true })
+    if (!file || disabled) return
+    onSubmit({ document: file, referenceFace, offlineEkyc, caseId, persistArtifacts: false })
   }
 
   return (
-    <div className="card">
-      <div className="card-header">
+    <form className="upload-panel" onSubmit={submit}>
+      <div className="upload-title">
         <div>
-          <h2>DAKSH Aadhaar Screening</h2>
-          <p>AI-Assisted Identity Document Analysis &amp; Evidence Screening</p>
+          <div className="eyebrow">START A NEW CASE</div>
+          <h2>Bring a document into review</h2>
+          <p>Use a clear JPG, PNG or PDF. The system will use only the checks available for the submitted evidence.</p>
         </div>
-        <span className="badge badge-info">P3 Module • SIH 26188</span>
+        <span className="status-pill good">Local screening</span>
       </div>
 
-      <form onSubmit={submit} style={{display:'flex', flexDirection:'column', gap:16}}>
-        <div className={`upload-zone ${dragOver?'dragover':''}`}
-          onDragOver={e=>{e.preventDefault(); setDragOver(true)}}
-          onDragLeave={()=>setDragOver(false)}
-          onDrop={handleDrop}
-          onClick={()=>docInput.current?.click()}
-        >
-          <div style={{fontSize:28, marginBottom:8}}>📄</div>
-          <div style={{fontWeight:600, fontSize:14}}>{docFile ? docFile.name : 'Drop Aadhaar document here or click to browse'}</div>
-          <div style={{fontSize:12, color:'#64748b', marginTop:6}}>Supported: JPG / JPEG / PNG / PDF — Max 10 MB</div>
-          <div style={{fontSize:11, color:'#94a3b8', marginTop:4}}>Prototype mode — use synthetic/sample identity documents. Official UIDAI authentication is not performed.</div>
-          <input ref={docInput} type="file" accept=".jpg,.jpeg,.png,.pdf" style={{display:'none'}} onChange={e=>setDocFile(e.target.files?.[0]||null)} />
-          {docFile && <div style={{marginTop:10}}><span className="badge badge-success">Selected: {docFile.name} • {(docFile.size/1024).toFixed(1)} KB</span></div>}
-        </div>
-
-        <div className="grid-2">
-          <div>
-            <label className="label">Reference / Current Face (optional)</label>
-            <input type="file" accept=".jpg,.jpeg,.png" className="input" onChange={e=>setRefFile(e.target.files?.[0]||null)} />
-            <div style={{fontSize:11, color:'#94a3b8', marginTop:4}}>Upload a live photo for face comparison</div>
-            {refFile && <div style={{marginTop:6}}><span className="badge badge-info">{refFile.name}</span></div>}
-          </div>
-          <div>
-            <label className="label">Offline e-KYC (optional)</label>
-            <input type="file" accept=".xml,.zip" className="input" onChange={e=>setEkycFile(e.target.files?.[0]||null)} />
-            <div style={{fontSize:11, color:'#94a3b8', marginTop:4}}>XML or ZIP from UIDAI offline eKYC</div>
-            {ekycFile && <div style={{marginTop:6}}><span className="badge badge-info">{ekycFile.name}</span></div>}
-          </div>
-        </div>
-
+      <div
+        className={`dropzone ${dragging ? 'dragging' : ''}`}
+        onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={(e) => { e.preventDefault(); setDragging(false); choose(e.dataTransfer.files?.[0]) }}
+        onClick={() => inputRef.current?.click()}
+      >
+        <input ref={inputRef} type="file" accept=".jpg,.jpeg,.png,.pdf" onChange={(e) => choose(e.target.files?.[0])} />
         <div>
-          <label className="label">Case ID (optional)</label>
-          <input className="input" placeholder="e.g., CASE-2026-001  (auto-generated if empty)" value={caseId} onChange={e=>setCaseId(e.target.value)} />
+          <div className="upload-icon">↑</div>
+          <strong>{file ? 'Document selected' : 'Drop the Aadhaar document here'}</strong>
+          <span>{file ? 'Click to choose a different file' : 'or click to browse • JPG, PNG, PDF'}</span>
         </div>
+      </div>
 
-        <div style={{display:'flex', gap:10, alignItems:'center', flexWrap:'wrap'}}>
-          <button type="submit" className="btn btn-primary" disabled={loading || !docFile}>
-            {loading ? 'Screening…' : '▶ START SCREENING'}
+      {file && <div className="selected-file">Selected: <strong>{file.name}</strong> • {(file.size / 1024 / 1024).toFixed(2)} MB</div>}
+
+      <div className="form-row">
+        <div className="field">
+          <label>Case ID (optional)</label>
+          <input value={caseId} onChange={(e) => setCaseId(e.target.value)} placeholder="e.g. CASE-001" />
+        </div>
+        <div className="field">
+          <label>Reference face (optional)</label>
+          <button type="button" className="file-button" onClick={() => faceRef.current?.click()}>
+            {referenceFace ? referenceFace.name : 'Choose reference image'}
           </button>
-          <span style={{fontSize:12, color:'#64748b'}}>Secure • SHA-256 hashed • Audit logged</span>
+          <input ref={faceRef} hidden type="file" accept=".jpg,.jpeg,.png" onChange={(e) => setReferenceFace(e.target.files?.[0] || null)} />
         </div>
+      </div>
 
-        <div className="alert alert-info">
-          <strong>Privacy note:</strong> Documents are processed with HASH_ONLY storage by default. Synthetic test documents must include “SYNTHETIC TEST DOCUMENT” watermark. No official UIDAI verification is performed — this system prioritizes review.
-        </div>
-      </form>
-    </div>
+      <div className="field" style={{marginTop:13}}>
+        <label>Offline eKYC evidence (optional)</label>
+        <button type="button" className="file-button" onClick={() => ekycRef.current?.click()}>
+          {offlineEkyc ? offlineEkyc.name : 'Choose XML / eKYC file'}
+        </button>
+        <input ref={ekycRef} hidden type="file" accept=".xml" onChange={(e) => setOfflineEkyc(e.target.files?.[0] || null)} />
+      </div>
+
+      <label className="check-option">
+        <input type="checkbox" defaultChecked />
+        <span>I understand this is an automated screening aid. Any final identity decision must follow the authorised verification process.</span>
+      </label>
+
+      <div className="privacy-note">
+        <strong>Privacy by design.</strong> For development and demonstration, use synthetic or authorised test documents whenever possible. Avoid sending real Aadhaar data to unapproved third-party services.
+      </div>
+
+      <button className="primary-button" disabled={!file || disabled}>
+        {disabled ? 'Connecting to screening service…' : 'Start document screening →'}
+      </button>
+    </form>
   )
 }
